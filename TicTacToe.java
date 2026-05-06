@@ -1,9 +1,3 @@
-/**
- * TicTacToe
- * UC8 controls the continuous game loop and alternates
- * turns until the game ends.
- */
-
 public class TicTacToe {
 
     static boolean isHumanTurn = true;
