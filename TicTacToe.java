@@ -1,21 +1,50 @@
-/**
- * TicTacToe
- * UC6 places a player's symbol on the board at the given position.
- * This use case focuses on updating game state.
- */
+import java.util.Random;
 
 public class TicTacToe {
 
-    static char[][] board = new char[3][3];
+    static char[][] board = {
+            {'-', '-', '-'},
+            {'-', '-', '-'},
+            {'-', '-', '-'}
+    };
+
+    static char computerSymbol = 'O';
 
     public static void main(String[] args) {
 
-        placeMove(0, 0, 'X');
-        System.out.println(board[0][0]);
+        computerMove();
+        displayBoard();
     }
 
-    static void placeMove(int row, int col, char symbol) {
+    static void computerMove() {
 
-        board[row][col] = symbol;
+        Random random = new Random();
+
+        while (true) {
+
+            int slot = random.nextInt(9) + 1;
+
+            int row = (slot - 1) / 3;
+            int col = (slot - 1) % 3;
+
+            if (board[row][col] == '-') {
+
+                board[row][col] = computerSymbol;
+                System.out.println("Computer selected slot: " + slot);
+                break;
+            }
+        }
+    }
+
+    static void displayBoard() {
+
+        for (int i = 0; i < 3; i++) {
+
+            for (int j = 0; j < 3; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+
+            System.out.println();
+        }
     }
 }
