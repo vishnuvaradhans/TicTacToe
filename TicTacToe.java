@@ -1,62 +1,30 @@
-/**
- * TicTacToe
- * UC9 checks whether a player has won by examining
- * rows, columns, and diagonals.
- */
+
 
 public class TicTacToe {
 
     static char[][] board = {
-            {'X', 'X', 'X'},
-            {'O', '-', 'O'},
-            {'-', '-', '-'}
+            {'X', 'O', 'X'},
+            {'O', 'X', 'O'},
+            {'O', 'X', 'X'}
     };
 
     public static void main(String[] args) {
 
-        System.out.println(hasWon('X'));
+        System.out.println(isDraw());
     }
 
-    static boolean hasWon(char symbol) {
+    static boolean isDraw() {
 
-        // Check rows
-        for (int i = 0; i < 3; i++) {
+        for (int r = 0; r < 3; r++) {
 
-            if (board[i][0] == symbol &&
-                board[i][1] == symbol &&
-                board[i][2] == symbol) {
+            for (int c = 0; c < 3; c++) {
 
-                return true;
+                if (board[r][c] == '-') {
+                    return false;
+                }
             }
         }
 
-        // Check columns
-        for (int i = 0; i < 3; i++) {
-
-            if (board[0][i] == symbol &&
-                board[1][i] == symbol &&
-                board[2][i] == symbol) {
-
-                return true;
-            }
-        }
-
-        // Check main diagonal
-        if (board[0][0] == symbol &&
-            board[1][1] == symbol &&
-            board[2][2] == symbol) {
-
-            return true;
-        }
-
-        // Check opposite diagonal
-        if (board[0][2] == symbol &&
-            board[1][1] == symbol &&
-            board[2][0] == symbol) {
-
-            return true;
-        }
-
-        return false;
+        return true;
     }
 }
