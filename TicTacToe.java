@@ -1,32 +1,62 @@
+/**
+ * TicTacToe
+ * UC9 checks whether a player has won by examining
+ * rows, columns, and diagonals.
+ */
+
 public class TicTacToe {
 
-    static boolean isHumanTurn = true;
-    static boolean gameOver = false;
+    static char[][] board = {
+            {'X', 'X', 'X'},
+            {'O', '-', 'O'},
+            {'-', '-', '-'}
+    };
 
     public static void main(String[] args) {
 
-        while (!gameOver) {
-
-            if (isHumanTurn) {
-
-                System.out.println("Human player's turn");
-
-            } else {
-
-                System.out.println("Computer player's turn");
-            }
-
-            checkGameStatus();
-
-            isHumanTurn = !isHumanTurn;
-        }
-
-        System.out.println("Game Over");
+        System.out.println(hasWon('X'));
     }
 
-    static void checkGameStatus() {
+    static boolean hasWon(char symbol) {
 
-        // Sample condition to stop the loop
-        gameOver = true;
+        // Check rows
+        for (int i = 0; i < 3; i++) {
+
+            if (board[i][0] == symbol &&
+                board[i][1] == symbol &&
+                board[i][2] == symbol) {
+
+                return true;
+            }
+        }
+
+        // Check columns
+        for (int i = 0; i < 3; i++) {
+
+            if (board[0][i] == symbol &&
+                board[1][i] == symbol &&
+                board[2][i] == symbol) {
+
+                return true;
+            }
+        }
+
+        // Check main diagonal
+        if (board[0][0] == symbol &&
+            board[1][1] == symbol &&
+            board[2][2] == symbol) {
+
+            return true;
+        }
+
+        // Check opposite diagonal
+        if (board[0][2] == symbol &&
+            board[1][1] == symbol &&
+            board[2][0] == symbol) {
+
+            return true;
+        }
+
+        return false;
     }
 }
