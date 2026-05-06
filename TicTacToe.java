@@ -1,50 +1,38 @@
-import java.util.Random;
+/**
+ * TicTacToe
+ * UC8 controls the continuous game loop and alternates
+ * turns until the game ends.
+ */
 
 public class TicTacToe {
 
-    static char[][] board = {
-            {'-', '-', '-'},
-            {'-', '-', '-'},
-            {'-', '-', '-'}
-    };
-
-    static char computerSymbol = 'O';
+    static boolean isHumanTurn = true;
+    static boolean gameOver = false;
 
     public static void main(String[] args) {
 
-        computerMove();
-        displayBoard();
-    }
+        while (!gameOver) {
 
-    static void computerMove() {
+            if (isHumanTurn) {
 
-        Random random = new Random();
+                System.out.println("Human player's turn");
 
-        while (true) {
+            } else {
 
-            int slot = random.nextInt(9) + 1;
-
-            int row = (slot - 1) / 3;
-            int col = (slot - 1) % 3;
-
-            if (board[row][col] == '-') {
-
-                board[row][col] = computerSymbol;
-                System.out.println("Computer selected slot: " + slot);
-                break;
-            }
-        }
-    }
-
-    static void displayBoard() {
-
-        for (int i = 0; i < 3; i++) {
-
-            for (int j = 0; j < 3; j++) {
-                System.out.print(board[i][j] + " ");
+                System.out.println("Computer player's turn");
             }
 
-            System.out.println();
+            checkGameStatus();
+
+            isHumanTurn = !isHumanTurn;
         }
+
+        System.out.println("Game Over");
+    }
+
+    static void checkGameStatus() {
+
+        // Sample condition to stop the loop
+        gameOver = true;
     }
 }
