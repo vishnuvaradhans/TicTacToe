@@ -7,13 +7,7 @@ public class TicTacToe{
         printBoard();
     };
 
-    static void initializeBoard(){
-        for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){
-                board[i][j] = '-';
-            }
-        }
-    }
+    
 
     static void printBoard(){
         for(int i=0; i<3; i++){
@@ -23,6 +17,14 @@ public class TicTacToe{
             System.out.println();
         }
         
+    }
+
+    static void initializeBoard(){
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                board[i][j] = '-';
+            }
+        }
     }
 
 }
